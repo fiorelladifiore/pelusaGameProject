@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+h1  {
+  font-family: 'Press Start 2P', cursive;
+  color: #f5f5f5;
+  font-size: 24px;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    3px 3px 0 #222; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+}
+
+#menu {
+  position: absolute;
+  inset: 0; 
+  background: radial-gradient(circle at top, #111 0%, #000 100%);
+  color: #e9ecec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  text-align: center;
+}
+
+#menu h1 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
+  color: #f7e5e5;
+  text-shadow: 2px 2px 0 #000;
+}
+
+#menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+#menu button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  padding: 10px 20px;
+  background: #feffff;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: transform 0.2s;
+}
+
+#menu button:hover {
+  transform: scale(1.1);
+  background: #d8a4a4;
+}
+
+body {
+    margin: 0;
+    max-height: 100%;
+}
+
+#container,
+#sky,
+#house1,
+#house2,
+#house3,
+#floor,
+#umbrella,
+#fountain {
+    width: 100%;
+}
+
+#container {
+    height: 100%;
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+
+body {
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+
+.dogRun {
+    position: absolute;
+    bottom: 10%;
+    width: 110px;
+    height: 110px;
+    background: url("../imagenes/dogRun.png");
+    animation: enemy 6.5s forwards linear,
+                enemy-frames 0.3s steps(6) infinite; 
+}
+
+
+
+@keyframes enemy {
+    from {
+      left: 100%;
+    }
+    to {
+      left: -10%;
+    }
+}
+
+@keyframes enemy-frames {
+    0%   { background-position: 0; }
+    100% { background-position: 660px; } 
+}
+
+#sky {
+    height: 90%;
+    background: url("../imagenes/Sky.png") repeat-x;
+    background-size: 1280px 100%;
+    position: absolute;
+    animation: sky 18s linear infinite;
+}
+
+@keyframes sky {
+    0% {
+        background-position: 1280px
+    }
+
+    100% {
+        background-position: 0
+    }
+}
+
+
+
+#house1 {
+    height: 100%;
+    background: url("../imagenes/houses.png") repeat-x;
+    background-size: 1280px 100%;
+    position: absolute;
+    animation: house1 10s linear infinite;
+}
+
+@keyframes house1 {
+    0% {
+        background-position: 1280px
+    }
+
+    100% {
+        background-position: 0
+    }
+}
+
+#house2 {
+    height: 100%;
+    background: url("../imagenes/houses2.png") repeat-x;
+    background-size: 1280px 100%;
+    position: absolute;
+    animation: house1 9s linear infinite;
+}
+
+
+#house3 {
+    height: 100%;
+    background: url("../imagenes/houses1.png") repeat-x;
+    background-size: 1280px 100%;
+    position: absolute;
+    animation: house1 6s linear infinite;
+}
+
+
+#fountain {
+    height: 110%;
+    background: url("../imagenes/fountain&bush.png") repeat-x;
+    background-size: 1280px 100%;
+    position: absolute;
+    animation: house1 6s linear infinite;
+}
+
+
+#umbrella {
+    height: 100%;
+    background: url("../imagenes/umbrella&policebox.png") repeat-x;
+    background-size: 1280px 100%;
+    position: absolute;
+    animation: house1 5s linear infinite;
+}
+
+
+
+#floor {
+    height: 80%;
+    background: url("../imagenes/road.png") repeat-x;
+    background-size: 1280px 100%;
+    animation: floor 2s linear infinite;
+    position: absolute;
+    bottom: 0px;
+    z-index: 0;
+}
+
+@keyframes floor {
+    0% {
+        background-position: 1280px
+    }
+
+    100% {
+        background-position: 0
+    }
+}
+
+#cat {
+   width: 100px;
+    height: 66px;
+    z-index: 1;
+    position: absolute;
+    bottom: 10%;
+    left: 100px;
+    background: url("../imagenes/cat.png") repeat-x;
+}
+
+
+
+#cat.jump {
+    background-image: url("../imagenes/jump.png");
+    animation: jump 400ms ease-out forwards;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+#cat.fall {
+    background-image: url("../imagenes/fall.png");
+    animation: fall-frames 0.7s steps(3) infinite, 
+               fall 400ms ease-in forwards;
+}
+
+#cat.land {
+    background-image: url("../imagenes/land.png");
+    animation: land-frames 0.7s steps(3) infinite, 
+               land 400ms linear forwards;
+}
+
+.run {
+    animation: run .4s steps(6) infinite;
+}
+
+#cat.roll {
+    background-image: url("../imagenes/roll.png"); 
+    animation: roll-frames 0.9s steps(8) forwards; 
+}
+
+#cat.death {
+    background-image: url("../imagenes/death.png"); 
+    animation: death-frames 0.9s steps(9) normal; 
+}
+
+#cat.hurt {
+     height: 20%;
+    background-image: url("../imagenes/hurt3.png"); 
+    animation: roll-frames 0.4s steps(1) forwards;
+
+
+}
+
+#cat.toRun {
+
+    background-image: url("../imagenes/toRun.png"); 
+    animation: toRun-frames 0.2s steps(2) forwards; 
+}
+
+@keyframes toRun-frames {
+    0%   { background-position: 0; }
+    100% { background-position: -200px; } 
+}
+
+
+@keyframes roll-frames {
+    0%   { background-position: 0; }
+    100% { background-position: -796px; } 
+}
+
+@keyframes death-frames {
+    0%   { background-position: 0; }
+    100% { background-position: -900px; } 
+}
+
+
+@keyframes run {
+    0% {
+        background-position: 0
+    }
+
+    100% {
+        background-position: -600px;
+    }
+}
+
+@keyframes hurt-frames {
+    10% {
+        background-position: 0
+    }
+
+    100% {
+        background-position: -85px;
+    }
+}
+
+@keyframes jump {
+    from {
+        bottom: 18%;
+    }
+    to {
+        bottom: 30%;
+    }
+   
+}
+
+@keyframes land-frames {
+    0% { background-position: 0;
+     }
+    100% { background-position: -300px; } 
+}
+
+@keyframes land {
+    
+    from {
+        bottom: 18%;
+        
+    }
+    to {
+        bottom: 10%;
+
+    }
+}
+
+@keyframes fall-frames {
+    0% { background-position: 0;
+     }
+    100% { background-position: -299px; } 
+}
+
+@keyframes fall {
+    
+    from {
+        bottom: 30%;
+        
+    }
+    to {
+        bottom: 18%;
+
+    }
+}
