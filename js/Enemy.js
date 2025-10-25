@@ -11,6 +11,5 @@ class Enemy extends Dog {
         super.status();
     }
 
-
     
 }
