@@ -1,5 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+
+/* style.css (Add this section) */
+
+#game-over-menu {
+ position: absolute;
+  inset: 0;
+background: rgba(0, 0, 0, 0.9); /* Darker overlay */
+color: #fff;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-family: 'Press Start 2P', cursive;
+z-index: 20; /* Ensure it's above everything else */
+text-align: center;
+gap: 20px;
+}
+
+#game-over-menu h2 {
+font-size: 24px;
+color: #ff5555; /* Red color for Game Over */
+margin-bottom: 20px;
+}
+
+#game-over-menu p {
+font-size: 16px;
+}
+
+#game-over-menu button {
+font-family: 'Press Start 2P', cursive;
+font-size: 14px;
+padding: 10px 20px;
+cursor: pointer;
+border: none;
+background: #fff;
+color: #000;
+transition: transform 0.2s;
+}
+
+#game-over-menu button:hover {
+transform: scale(1.1);
+ background: #d8a4a4;
+}
+
 #pause-menu {
   position: absolute;
   inset: 0;
@@ -51,6 +95,13 @@ h1  {
 
 }
 
+#vidas{
+    padding: 90px;
+}
+
+img{
+ width: 40px;
+}
 #menu {
   position: absolute;
   inset: 0; 
@@ -93,6 +144,21 @@ h1  {
   background: #d8a4a4;
 }
 
+#score-display{
+    padding: 50px;
+      font-family: 'Press Start 2P', cursive;
+  color: #f5f5f5;
+  font-size: 24px;
+  text-shadow:
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    3px 3px 0 #222; 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 body {
     margin: 0;
     max-height: 100%;
@@ -128,6 +194,7 @@ body {
     background: url("../imagenes/hydrant.png");
     animation: hydrant 6.5s forwards linear;
 }
+
 
 @keyframes hydrant {
     from {

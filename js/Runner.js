@@ -14,6 +14,8 @@ class Runner extends Cat {
         return this.cat.getBoundingClientRect();
     }
 
+
+
     run() {
         this.clean();
         this.cat.classList.add("run");
@@ -56,7 +58,7 @@ class Runner extends Cat {
     this.toRun();
      }
 
-    death(){// evita superposición
+    death(){
         this.isDead = false;
         this.clean();
         this.cat.classList.add("death");
