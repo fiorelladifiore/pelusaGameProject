@@ -12,12 +12,19 @@
     <ul>
       <li><button id="start-btn">Iniciar partida</button></li>
       <li><button id="howto-btn">Cómo jugar</button></li>
-      <li><button id="exit-btn">Salir</button></li>
     </ul>
     <img src="imagenes/catmenu.gif" alt="">
   </div>
 
-  
+  <div id="start-tutorial-menu" style="display: none;">
+    <h2>CONTROLES</h2>
+    <div class="tutorial-content">
+        <p><span class="key-box">ESPACIO</span> = Saltar</p>
+        <p><span class="key-box">Z</span> = Atacar (solo perros)</p>
+        <p><span class="key-box">P</span> = Pausa</p>
+    </div>
+    <button id="start-tutorial-btn">¡Entendido!</button>
+</div>
     
      <div id="container" style="display: none;">
         <div id="sky">
@@ -52,6 +59,33 @@
   <h2>PAUSA</h2>
   <button id="resume-btn">Reanudar</button>
   <button id="exit-btn2">Salir al menú</button>
+</div>
+
+  <div id="pause-menu" style="display: none;">
+  <h2>PAUSA</h2>
+  <button id="resume-btn">Reanudar</button>
+  <button id="exit-btn2">Salir al menú</button>
+</div>
+
+<div id="howto-menu" style="display: none;">
+    <h2 class="retro-text">CÓMO JUGAR</h2>
+    <div class="howto-content">
+        <p>Pelusa salió a perseguir a un ratón por la calle y fue tan lejos que se perdió. Deberás ayudarle a regresar a casa</p>
+        <div class="control-item">
+            <span class="control-key">ESPACIO</span>
+            <span class="control-action">Saltar</span>
+        </div>
+        <div class="control-item">
+            <span class="control-key">Z</span>
+            <span class="control-action">Ataque</span>
+        </div>
+        <div class="control-item">
+            <span class="control-key">P</span>
+            <span class="control-action">Pausar Juego</span>
+        </div>
+        <p class="warning-text">¡Evita los grifos y ataca a los perros! </p>
+    </div>
+    <button id="back-to-menu-btn">Volver al Menú</button>
 </div>
     
     <script src="js/Cat.js"></script>

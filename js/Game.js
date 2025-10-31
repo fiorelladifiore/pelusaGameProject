@@ -13,10 +13,16 @@ const restartBtn = document.getElementById('restart-btn'); //boton reiniciar
 const exitToMenuBtn = document.getElementById('exit-to-menu-btn'); //boton salir al menu principal
 const finalScoreDisplay = document.getElementById('final-score'); //puntuacion
 const scoreDisplay = document.getElementById('score-display'); //puntuacion
+const howtoBtn = document.getElementById('howto-btn'); // Botón "Cómo Jugar" en el menú principal
+const howtoMenu = document.getElementById('howto-menu'); // El div del menú "Cómo Jugar"
+const backToMenuBtn = document.getElementById('back-to-menu-btn'); // Botón "Volver al Menú" dentro de "Cómo Jugar"
+// Nuevas variables para el tutorial
+const startTutorialMenu = document.getElementById('start-tutorial-menu');
+const startTutorialBtn = document.getElementById('start-tutorial-btn');
 
 
 
-let score = 0;  //puntuacion (hacer luego)
+let score = 0; 
 let scoreIntervalId = null;
 let gamePaused = false;
 let gameLoopInterval;
@@ -41,6 +47,17 @@ startBtn.addEventListener('click', () => {
   iniciarJuego();
 });
 
+howtoBtn.addEventListener('click', () => {
+  menu.style.display = 'none'; // Oculta el menú principal
+  howtoMenu.style.display = 'flex'; // Muestra el menú de cómo jugar
+});
+
+// Event listener para el botón "Volver al Menú" desde "Cómo Jugar"
+  backToMenuBtn.addEventListener('click', () => {
+  howtoMenu.style.display = 'none'; // Oculta el menú de cómo jugar
+  menu.style.display = 'flex'; // Muestra de nuevo el menú principal
+});
+
 resumeBtn.addEventListener('click', () => reanudarJuego());
 
 exitBtn2.addEventListener('click', () => {
@@ -48,6 +65,13 @@ exitBtn2.addEventListener('click', () => {
   game.style.display = 'none';
   menu.style.display = 'flex';
   detenerJuego();
+});
+
+//tutorial
+
+startTutorialBtn.addEventListener('click', () => {
+    startTutorialMenu.style.display = 'none';
+
 });
 
 
@@ -71,22 +95,19 @@ document.addEventListener('keydown', (event) => {
     if (!gamePaused) runner.jump();
   }
 
-  if (event.key === "a") {
-    event.preventDefault();
-    if (!gamePaused) runner.hurt();
-  }
+
 
   if (event.key === "d") {
     event.preventDefault();
     if (!gamePaused) runner.death();
   }
 
+  if (event.key === "z") {
+    if (!gamePaused) runner.roll();
+  }
+
   if (event.key === "p") alternarPausa();
   });
-
-document.addEventListener("click", () => {
-  if (!gamePaused) runner.roll();
-});
 
 // funciones del juego
 
@@ -127,6 +148,8 @@ function iniciarJuego() {
     vidas = 3;
     
     actualizarVidas();
+
+    startTutorialMenu.style.display = 'flex';
 
     // iniciar loop del juego
     gameLoopInterval = setInterval(gameLoop, 50);
@@ -185,15 +208,36 @@ function gameLoop() {
 
   // Colisiones con enemigos
   document.querySelectorAll(".dogRun").forEach(dogDiv => {
-    if (hayColision(catDiv, dogDiv)) {
-      perderVida();
-      dogDiv.remove();
-    }
-  });
+     if (hayColision(catDiv, dogDiv)) {
 
+        if (runner.isRolling) {
+            // GATO GANA: El gato está rodando.
+            dogDiv.remove(); // Elimina al perro.
+        } else {
+            // GATO PIERDE: El gato no está rodando, así que se hiere.
+            
+              runner.hurt();
+              perderVida();
+
+                dogDiv.remove();
+      
+          setTimeout(() => {
+          if (runner) {
+          runner.isJumping = false;
+          runner.isHurt = false;
+          runner.isRolling = false;
+          }
+                // Reseteo VISUAL del gato
+                if(catDiv) catDiv.className = 'run';
+
+      }, 400); // 400ms = 0.4s (duración de la animación 'hurt' del gato)
+        }
+   
+ }});
   // Colisiones con obstáculos
   document.querySelectorAll(".hydrant").forEach(hydrantDiv => {
     if (hayColision(catDiv, hydrantDiv)) {
+      runner.hurt();
       perderVida();
       hydrantDiv.remove();
     }
